@@ -1,0 +1,1804 @@
+/* Roboto font */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 1920px;
+}
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background: url(../images/background.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+$dark: #060b14;
+$pink: rgb(112, 5, 52);
+$dark-pink:rgba(112, 5, 52, 0.5);
+@mixin text-mobile {
+    text-decoration: none;
+    color: white;
+    // text-shadow: 0 0px 2px $pink;
+    text-shadow: 0 0 2px $dark;
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-page {
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    // background-image: url(../images/background.jpg);
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-attachment: fixed;
+}
+
+
+// hamburger icon
+
+.hamburger{
+    position: fixed;
+    z-index: 9999;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    background-color: rgba(112, 5, 52, 1);
+    border: 1px solid $dark;
+    margin: 0;
+    overflow: hidden;
+}
+
+.hamburger--active {
+    transform: translateX(140px);
+}
+
+.hamburger, .menu {
+    transition: transform .3s .1s ease-in-out;
+}
+
+@mixin hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    
+}
+
+.hamburger__box {
+    width: 35px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger__inner {
+    @include hamburger-line;
+
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color .1s .2s ease-in-out;
+}
+
+.hamburger__inner::before,
+.hamburger__inner::after {
+    @include hamburger-line;
+
+    content: '';
+    left: 0;
+    transition: transform .2s .2s ease-in-out;
+}
+
+.hamburger__inner::before{
+    top: -10px;
+}
+
+.hamburger__inner::after{
+    top: 10px;
+}
+
+.hamburger--active .hamburger__inner {
+    background-color: transparent;
+}
+
+.hamburger--active .hamburger__inner:before {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger--active .hamburger__inner:after {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+
+//Sidebar navigation
+
+.menu {
+    height: 100vh;
+    width:140px;
+    background-color: #060b14;
+    position: fixed;
+    top:0;
+    left:0;
+    transform: translateX(-140px);
+    z-index: 999;
+
+    .menu--list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%,-100%);
+        height: 75px;
+        width: 75px;
+        img {
+            width:100%;
+            height: auto;
+            overflow: hidden;
+            border: 5px solid $dark-pink;
+            box-shadow: 0 0 2px $dark-pink;
+            border-radius: 50%;
+        }
+    }
+    
+}
+
+.menu--active {
+    transform: translateX(0);
+}
+
+.menu--list {
+    margin-top: 10px;
+    list-style: none;
+
+}
+
+.menu--item {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid $dark-pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+
+    button {
+        background-color: transparent;
+        border-style: none;
+    }
+
+    a, button {
+        @include text-mobile;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    
+    
+
+        i {
+            font-size: 23px;
+            padding: 3px;
+        }
+
+
+
+        
+
+    }
+}
+
+
+
+
+
+// Brand name
+
+.brand--name {
+    position: absolute;
+    width: 100%;
+    top:18%;
+    border-bottom: 4px solid $dark-pink;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    
+    .odNova {
+        width: 80%;
+        @include text-mobile;
+        font-size: 26px;
+        margin: 0 auto;
+        font-weight: bold;
+        animation: mobile-move .7s .3s forwards ease-in-out;
+        text-align: center;
+        
+    }
+}
+
+.motto {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(112, 5, 52,.6);
+    border-top: 1px solid $dark;
+    border-bottom: 1px solid $dark;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2, span {
+        width:80%;
+        @include text-mobile;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.btn {
+    cursor: pointer;
+    position: absolute;
+    top: 70%;
+    left: -50%;
+    width: 160px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $dark;
+    border: 3px solid $pink;
+    border-radius: 10px;
+    box-shadow: 0 0 2px $dark;
+    @include text-mobile;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: mobile-move .7s .3s forwards ease-in-out;
+    
+}
+
+
+
+//----------------------------------- END MAIN PAGE -----------------------------
+
+
+.offer--section {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 1fr;
+
+    .my--services {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $pink;
+        border: 2px solid $dark;
+
+        p {
+            @include text-mobile;
+            
+            letter-spacing: 0.5rem;
+            font-weight: bold;
+        }
+
+    }
+
+    .grid--container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+
+        .grid--item {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid $dark;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p {
+                @include text-mobile;
+
+                width: 100%;
+                text-align: center;
+                background-color: rgba(0,0,0,0.4);
+                color: #fff;
+            }
+        }
+
+        
+
+        
+
+
+    }
+}
+
+.content--1 {
+    background-image: url(../images/nails-865121_1280.jpg);
+}
+
+.content--2 {
+    background-image: url(../images/woman-1677558_1280.jpg);
+}
+
+.content--3 {
+    background-image: url(../images/massage-1929064_1280.jpg);
+}
+
+
+// About--me 
+
+.about--me {
+    height: 90vh;
+    width: 100%;
+    background: linear-gradient(to top,$dark, $pink);
+    border: 1px solid $dark;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    h1 {
+        @include text-mobile;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 30px;
+        padding: 15px;
+        border-bottom: 3px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+            font-size: 23px;
+            padding-right: 15px;
+        }
+    }
+
+    .describe {
+        height: 63%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        
+
+        p {
+            height: 50%;
+            width: 100%;
+            display: block;
+            @include text-mobile;
+            font-size: 15px;
+            text-align: left;
+            padding-left: 5%;
+            padding-right: 5%;
+
+            .dot {
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50%;
+                    margin-right: 5px;
+                    background-color: #fff;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .contact-btn {
+            cursor: pointer;
+            margin-top: 50px;
+            background-color: transparent;
+            width: 260px;
+            height: 60px;
+            @include text-mobile;
+            text-align: center;
+            text-transform: uppercase;
+            border: 1px solid #fff;
+            box-shadow: 0 0 0 3px #fff;
+            transform:translateX(-60%);
+            opacity: 0;
+            transition: all .6s;
+        }
+
+        .contact-btn-active {
+            transform:translateX(0);
+            opacity:1;
+
+        }
+};
+
+
+
+// loader
+
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #242f3f;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
+  }
+
+  .loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+  }
+
+
+  //gallery
+  .gallery {
+      width: 100%;
+      height: 100%;
+      background-color:rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .container-jobs {
+          width:100%;
+          height: 20vh;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          flex-wrap: wrap;
+          border: 2px solid #000;
+
+          .my-jobs {
+
+            i {
+                font-size: 22px;
+                width: 30%;
+            }
+            height: 100%;
+            width: 60%;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 0 0 3px black;
+            letter-spacing: 2px;
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+          }
+
+        
+
+        
+
+          
+      }
+  }
+
+      .gallery-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        .content-gallery {
+            height: 50vh;
+            flex-basis: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            border: 1px solid black;
+            opacity: 0;
+            transition: all .4s;
+
+            
+
+
+        }
+
+        .align-left {
+            transform: translateX(-30%) scale(0.95);
+            
+
+        }
+
+        .align-right {
+            transform: translateX(30%) scale(0.95);
+            
+        }
+
+        .active-content {
+            opacity: 1;
+            transform: translateX(0%) scale(1);
+        }
+
+
+        
+
+
+    }
+
+ #content-1 {
+     background-image: url(../images/paznokcie3.jpg);
+ }
+
+ #content-2 {
+     background-image: url(../images/paznokcie7.jpg);
+ }
+
+ #content-3 {
+     background-image: url(../images/paznokcie5.jpg);
+ }
+
+ #content-4 {
+    background-image: url(../images/paznokcie6.jpg);
+}
+
+#content-5 {
+    background-image: url(../images/lashes1.jpg);
+}
+
+#content-6 {
+    background-image: url(../images/lashes3.jpg);
+}
+
+// text
+
+.text-container {
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/background-2.jpg);
+    background-blend-mode: darken;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    border: 2px solid #000;
+
+    .text{
+        text-align: left;
+        height: 80%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.6);
+        @include text-mobile;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10%;
+        background-color: rgba(112, 5, 52, 0.3);
+    }
+
+    .name {
+        @include text-mobile;
+        font-size: 28px;
+        font-weight: bold;
+        width: 100%;
+        height: 20%;
+        background: linear-gradient(to top, #060b14, #700534);
+        text-align: left;
+        padding: 10%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+
+        p {
+            height: 50%;
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            // align-content: center; 
+        }
+
+        i {
+            font-size: 28px;
+            margin-left: 5%;
+        }
+    }
+}
+
+//contact 
+
+.contact {
+    height: 90vh;
+    width: 100%;
+    background-color: $dark;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .contact-form {
+        width: 90%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .el {
+            height: 17%;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            p {
+                @include text-mobile;
+                text-shadow: 0 0 1px #fff;
+                color: #fff;
+                border-bottom: 4px solid rgb(130, 73, 103);
+                padding-bottom: 2%;
+                font-weight: bold;
+                font-size: 30px;
+                text-align: center;
+                // padding: 5%;
+                
+
+                i {
+                    @include text-mobile;
+                    // text-shadow: 0 0 1px #fff;
+                    color: rgb(130, 73, 103);
+                    font-size: 30px;
+                    padding-right: 15px;
+                }
+            }
+
+            a {
+                @include text-mobile;
+                text-shadow: 0 0 1px #fff;
+                font-size: 16px;
+                border-bottom: 3px solid rgb(130, 73, 103);
+                padding-bottom:7px;
+                width: 100%;
+                font-weight: bold;
+                color: #fff;
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                i {
+                    @include text-mobile;
+                    // text-shadow: 0 0 1px #fff;
+                    margin-right: 5px;
+                    color: rgb(130, 73, 103);
+                }
+            }
+        }
+            
+            
+            
+        }
+
+    }
+    .contact {
+        .contact-form {
+            .contact-title {
+                justify-content: center;
+                margin-bottom: 20px;
+            
+
+            }
+
+            .instagram {
+                transition: all 0.4s 0.1s;           }
+            .facebook {
+                transition: all 0.4s 0.2s;
+            }
+            .email {
+                transition: all 0.4s 0.3s;
+            }
+            .my-site {
+                transition: all 0.4s .4s;
+            }
+            .contact-logo {
+                transition: all 0.4s .5s;
+            }
+
+            .contact-content {
+                opacity:0;
+                transform: translateX(-30%);
+            }
+
+            .contact-content-active {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+            .contact-logo {
+            padding: 11px;
+            width: 36%;
+            margin-top: 5px;
+            
+            img {
+            justify-content: center;
+            width:100%;
+            height: auto;
+            overflow: hidden;
+            border: 5px solid rgb(130, 73, 103);
+            box-shadow: 0 0 2px rgb(130, 73, 103);
+            border-radius: 50%;
+            }
+            
+            }
+        }
+    }
+
+    //footer 
+
+    footer {
+        height: 40vh;
+        width:100%;
+        background-color: #fff;
+        
+        .footer-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            .odnovabysandra {
+                width:100%;
+                height: 70%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #060b14;
+                color: #fff;
+
+                h2 {
+                    width: 80%;
+                    font-size: 15px;
+
+                    i {
+                        font-size: 15px;
+                    }
+                }
+                
+            }
+            
+            .my-container {
+                background-color:rgb(16, 56, 73);
+                height: 30%;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                p {
+                    width: 60%;
+                    height: 60%;
+                    color: #fff;
+                    font-size: 12px;
+                    
+                    a {
+                        text-decoration: none;
+                        font-size: 13px;
+                        color:#fff;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+            }   
+            
+
+        }
+
+    }
+
+
+
+// media 
+
+
+@media (min-width: 360px) and (orientation: portrait) {
+    .main--btn{
+        width: 180px;
+        left: 10%;
+    }
+
+    .brand--name {
+        p {
+            font-size: 37px;
+        }
+    }
+}
+
+@media (min-width: 360px) and (orientation: portrait) {
+    .menu {
+        .logo {
+            top: 80%;
+            height: 90px;
+            width: 90px;
+
+            
+        }
+    }
+    .brand--name {
+        .odNova {
+            font-size: 29px;
+        }
+    }
+    .motto {
+        h2 {
+            font-size: 19px;
+        }
+        
+    }
+
+    .btn {
+        width: 197px;
+    }
+
+    .about--me {
+
+        .describe {
+            p {
+                font-size: 18px;
+            }
+        }
+        .contact-btn {
+            margin-top: 118px;
+            height: 20%;
+            font-size: 18px;
+            
+
+        }
+
+        
+    }
+
+    .gallery{
+        .container-jobs {
+            .my-jobs {
+                font-size: 25px;
+            }
+        }
+    }
+
+    .text-container {
+        .text {
+            font-size: 18px;
+        }
+    }
+
+    .contact {
+        .contact-form {
+            .el {
+                a {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+
+
+}
+@media (min-width: 533px) and (orientation: landscape) {
+    .brand--name {
+        .odNova {
+            font-size: 31px;
+        }
+    }
+    .main--btn {
+        top: 70%;
+        left: 7%;
+        width: 170px;
+
+    }
+
+    .brand--name {
+        p {
+            font-size: 35px;;
+        }
+    }
+
+    .menu {
+        .logo {
+            display: none;
+        }
+    }
+
+    .motto {
+        top: 36%;
+        font-size: 17px;
+    }
+
+    .offer--section {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+
+        .my--services {
+            width: 100%;
+            height: 20%;
+        }
+        .grid--container {
+            height: 80%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: wrap;
+
+            .content--1,.content--2 {
+                height: 60%;
+                width: 50%;
+            }
+
+            .content--3 {
+                height: 43%;
+                width: 100%;
+            }
+
+        }
+    }
+    
+    .about--me {
+        #btn-2 {
+            margin-top: 25px;
+        }
+    }
+
+    .gallery {
+        .container-jobs {
+            .my-jobs {
+                width: 36%;
+            }
+        }
+        .gallery-container {
+            flex-wrap: nowrap;
+
+            .content-gallery {
+                height: 50vh;
+                width: 50%
+            }
+            
+        }
+        
+        
+    }
+
+    .text-container {
+        height: 100vh;
+
+        .name {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        
+
+    }
+
+    .contact {
+        .contact-form {
+            .contact-logo {
+                display: none;
+            }
+        }
+    }
+
+}
+
+@media (min-width: 375px) and (orientation: portrait) {
+    .brand--name {
+        .odNova {
+            width: 100%;
+            font-size: 35px;
+        }
+    }
+    .offer--section {
+        .my--services {
+            p {
+                font-size: 32px;
+            }
+            
+        }
+    }
+    .about--me {
+        h1 {
+            font-size: 32px;
+        }
+    }
+
+    .about--me {
+        #btn-2 {
+            margin-top: 192px;
+            font-size: 19px;
+        }
+    }
+
+    .gallery {
+        .container-jobs {
+            .my-jobs {
+                width: 75%;
+                font-size: 32px;
+
+                i {
+                    width: 16%;
+                }
+            }
+        }
+    }
+
+    .text-container {
+        .text {
+            font-size: 22px;
+        }
+    }
+
+    .contact {
+        .contact-form {
+            .el {
+                p {
+                    font-size: 40px;
+                }
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+
+    .brand--name {
+        border-width: 7px;
+        p {
+            font-size: 50px;;
+        }
+        .odNova {
+            font-size: 58px;
+        }
+    }
+
+    .hamburger__box {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hamburger--active {
+        transform: translateX(180px);
+    }
+
+    .menu {
+        width: 180px;
+        transform: translateX(-180px);
+        .menu--list {
+            height: 45%;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .offer {
+                border: none;
+            }
+        }
+    }
+
+    .menu--active {
+        transform: translateX(0);
+    }
+
+    .menu--item {
+        border-width: 3px;
+
+        
+        a, button {
+            font-size: 31px;
+            i {
+                font-size: 31px;
+            }
+        }
+    }
+
+    .motto {
+        top: 31%;
+        height: 15vh;
+
+        h2 {
+            font-size: 30px;
+
+            span {
+                font-size: 30px;
+            }
+        }
+    }
+
+    .btn {
+        width: 300px;
+        height: 80px;
+        font-size: 30px;
+    }
+
+    .offer--section {
+        .my--services {
+            p {
+                font-size: 45px;
+            }
+        }
+
+    .grid--container {
+        .grid--item {
+            p {
+                font-size: 37px;
+            }
+        }
+     }
+    }
+
+    .about--me {
+        h1{
+            font-size: 45px;
+            i {
+                font-size: 45px;
+            }
+        }
+
+        .describe {
+            p {
+                font-size: 35px;
+                margin-top: 70px;
+
+                .dot {
+                    height: 25px;
+                    width: 25px;
+                }
+            }
+
+            #btn-2 {
+                margin-top: 136px;
+                font-size: 30px;
+            }
+        }
+
+    }
+
+    .gallery {
+        .container-jobs {
+            .my-jobs {
+                font-size: 45px;
+                i {
+                    font-size: 45px;
+                }
+            }
+        }
+    }
+
+    .text-container {
+        .text {
+            font-size: 35px;
+        }
+        .name {
+            justify-content: flex-end;
+            p {
+                font-size: 45px;
+            }
+            i {
+                font-size: 45px;
+            }
+        }
+    }
+
+    .contact {
+        .contact-form {
+            .el {
+                p {
+                    font-size: 60px;
+                    border-width: 6px;
+                    i {
+                        font-size: 60px;
+                    }
+                }
+
+                a {
+                    font-size: 40px;
+                    i {
+                        font-size: 40px;
+                    }
+                }
+            }
+            .contact-logo {
+                width: 23%;
+            }
+        }
+
+        
+    }
+
+    footer {
+        .footer-container {
+            .odnovabysandra {
+                h2 {
+                    font-size: 20px;
+                }
+            }
+
+            .my-container {
+                p {
+                    font-size: 17px;
+                    a {
+                        font-size: 17px;
+                    }
+                }
+                
+                
+            }
+        }
+    }
+};
+
+@media (max-width: 812px) {
+    .services {
+        background-color: $dark-pink;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hamburger {
+        display: none;
+    }
+
+
+    .offer {
+        display: none;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        transform: none;
+
+        .menu--list {
+            height: 100%;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+
+            .menu--item {
+                width: 190px;
+                border: none;
+
+                a, button {
+                    font-size: 25px;
+                    transition: all 0.2s;
+                    i {
+                        transition: all 0.2s;
+                    }
+                }
+
+                a:hover, button:hover {
+                    border-bottom: 3px solid rgba(112, 5, 52, 0.5);
+                    transform: scale(1.05);
+                    i {
+                        color:rgba(112, 5, 52, 0.5);
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+
+        .logo {
+            display: block;
+            transform: none;
+            top: 12%;
+            left: 7%;
+            height: 100px;
+            width: 100px;
+            transition: all 0.5s;
+        }
+        .logo:hover {
+            transform: rotate(-360deg);
+        }
+
+        
+
+    }
+
+    .main-page {
+        .btn {
+            position: relative;
+            background-color: #fff;
+            color:#000;
+            border-width: 5px;
+            transition: all 0.2s;
+            width: 300px;
+            height: 80px;
+            font-size: 30px;
+
+            
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            width:100%;
+            height: 0;
+            bottom:0;
+            left:0;
+            background-color:#060b14;
+            transition: 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            height: 100%;
+        }
+
+        .btn:hover {
+            color:#fff;
+        }
+
+        
+    }
+
+    .brand--name {
+        top: 24%;
+
+        .odNova {
+            font-size: 75px;
+        }
+    }
+
+    .motto {
+        top: 38%;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        h2 {
+            font-size: 45px;
+            width: 85%;
+            span {
+                font-size: 45px;
+            }
+        }
+    }
+
+    .offer--section {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+
+        .my--services {
+            width: 100%;
+            height: 20%;
+            p {
+                font-size: 50px;
+            }
+        }
+        .grid--container {
+            height: 85%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: wrap;
+
+            .grid--item {
+                p {
+                    font-size: 45px;
+                }
+            } 
+
+            .content--1,.content--2 {
+                height: 57%;
+                width: 50%;
+            }
+
+            .content--3 {
+                height: 43%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+
+        
+    }
+
+    .about--me {
+        h1 {
+            font-size: 50px;
+        }
+
+        .describe {
+            p {
+                width: 75%;
+                font-size: 30px;
+            }
+
+            #btn-2 {
+                position: relative;
+                font-size: 35px;
+                width:65%;
+                transition: 0.3s ease-in-out;
+            }
+
+            #btn-2::before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                height: 100%;
+                width:0;
+                background-color: #fff;
+                z-index:-1;
+                transition: 0.3s linear;
+            }
+
+            #btn-2:hover::before {
+                width:100%;
+            }
+
+            #btn-2:hover {
+                color: $dark;
+                border: 5px solid $dark-pink;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .gallery {
+        .container-jobs {
+            flex-wrap: nowrap;
+
+            .my-jobs {
+                font-size: 50px;
+                i {
+                    width: 12%;
+                }
+            }
+        }
+        .gallery-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: wrap;
+            padding: 0 30px 0 30px;
+
+            .content-gallery {
+                flex-basis: 50%;
+                height: 50vh;
+                border-width: 4px;
+            }
+        }
+    }
+
+    .text-container {
+       .text {
+           font-size: 40px;
+       }
+       .name {
+           p {
+               width:50%;
+               height: 100%;
+               font-size: 60px;
+               font-display: flex;
+               justify-content: center;
+               align-items: center;
+           
+           }
+
+           i {
+               font-size: 60px;
+               width:20%;
+               height: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               margin-right: 5%;
+               margin-left:2%;
+           }
+       } 
+    }
+
+    .contact {
+        .contact-form {
+            position: relative;
+
+            .contact-title {
+                width: 100%;
+                justify-content: center;
+                background-color: rgba(112, 5, 52, 0.3);
+                border: 6px solid #fff;
+            }
+            .el {
+                p {
+                    font-size: 65px;
+                    border: none;
+                    padding: 0%;
+                    i {
+                        color: #fff;
+                        font-size: 65px;
+                    }
+                }
+
+                a {
+                    font-size: 45px;
+                    i {
+                        font-size: 75px;
+                        margin-right: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+    .menu {
+        .menu--list {
+            width: 80%;
+            justify-content: flex-end;
+
+            
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .contact {
+        .contact-form {
+            .contact-logo {
+                width: 120px;
+                height: 120px;
+                transition: all 0.3s;
+            }
+
+            .contact-logo:hover {
+                transform: rotate(-360deg);
+            }
+        }
+    }
+    
+
+    
+}
+
+@media (min-width: 1400px) {
+    .gallery {
+        .gallery-container {
+            .content-gallery {
+                flex-basis: 33%;
+            }
+        }
+    }
+
+    footer {
+        .footer-container {
+            .odnovabysandra {
+                h2 {
+                    font-size: 20px;
+                    text-align: center;
+
+                    i {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .my-container {
+                p {
+                    font-size: 17px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 30px;
+                    a {
+                        padding-left: 5px;
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+
+
+// animations
+
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    
+    25% {
+      transform: rotate(180deg);
+    }
+    
+    50% {
+      transform: rotate(180deg);
+    }
+    
+    75% {
+      transform: rotate(360deg);
+    }
+    
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes loader-inner {
+    0% {
+      height: 0%;
+    }
+    
+    25% {
+      height: 0%;
+    }
+    
+    50% {
+      height: 100%;
+    }
+    
+    75% {
+      height: 100%;
+    }
+    
+    100% {
+      height: 0%;
+    }
+  }
+
+  @keyframes mobile-move {
+        0% {
+            top: 70%;
+            left: -50%;
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+
+        50% {
+            opacity: 0.3;
+        }
+
+        100% {
+            top: 70%;
+            left: 7%;
+            opactiy: 1;
+        }
+  }
+
+
+  @keyframes title-scale {
+      0%{
+          opacity: 0;
+      }
+
+      45% {
+        opacity: 0.5;
+      }
+
+
+      80%{
+          opacity: 1;
+          transform: scale(1.1);
+    
+        } 
+
+
+      100%{
+          opacity: 1;
+          transform: scale(1);
+      }
+  }
+
+  @keyframes show-p {
+      0% {
+          opacity: 0;
+          transform: translate(-100%, -100%);
+      }
+
+      100% {
+          opacity: 1;
+          transform: translate(0,0);
+      }
+  }
+
+
+  //active- classes 
+
+  .p-active {
+      animation: show-p .8s .3s linear;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
